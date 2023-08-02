@@ -13,22 +13,22 @@ int p = InputNumbers("Введите число строк 1-й матрицы: 
 int r = InputNumbers("Введите число столбцов 2-й матрицы: ");
 
 int[,] firstMartrix = new int[m, n];
-CreateArray(firstMartrix);
+FillArray(firstMartrix);
 Console.WriteLine($"\nПервая матрица:");
-WriteArray(firstMartrix);
+PrintArray(firstMartrix);
 
-int[,] secomdMartrix = new int[p, r];
-CreateArray(secomdMartrix);
+int[,] secondMartrix = new int[p, r];
+FillArray(secondMartrix);
 Console.WriteLine($"\nВторая матрица:");
-WriteArray(secomdMartrix);
+PrintArray(secondMartrix);
 
 int[,] resultMatrix = new int[m, r];
 
-MultiplyMatrix(firstMartrix, secomdMartrix, resultMatrix);
+MultiplyMatrix(firstMartrix, secondMartrix, resultMatrix);
 Console.WriteLine($"\nПроизведение первой и второй матриц:");
-WriteArray(resultMatrix);
+PrintArray(resultMatrix);
 
-void MultiplyMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] resultMatrix)
+void MultiplyMatrix(int[,] firstMartrix, int[,] secondMartrix, int[,] resultMatrix)
 {
     for (int i = 0; i < resultMatrix.GetLength(0); i++)
     {
@@ -37,7 +37,7 @@ void MultiplyMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] resultMatr
             int sum = 0;
             for (int k = 0; k < firstMartrix.GetLength(1); k++)
             {
-                sum += firstMartrix[i, k] * secomdMartrix[k, j];
+                sum += firstMartrix[i, k] * secondMartrix[k, j];
             }
             resultMatrix[i, j] = sum;
         }
@@ -51,7 +51,7 @@ int InputNumbers(string input)
     return output;
 }
 
-void CreateArray(int[,] array)
+void FillArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -62,7 +62,7 @@ void CreateArray(int[,] array)
     }
 }
 
-void WriteArray(int[,] array)
+void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
